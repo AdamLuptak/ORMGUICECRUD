@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/black"
+    android:padding="10dp">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent">
+
+        <TextView
+            android:id="@+id/arrivalTime"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:height="20dip"
+            android:gravity="left"
+            android:text="ArrivalTime:"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/leaveTime"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:gravity="left"
+            android:text="LeaveTime:"
+            android:textColor="@android:color/white" />
+    </TableRow>
+    -
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent">
+
+        <TextView
+            android:id="@+id/dayOfWeek"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight=".3"
+            android:gravity="left"
+            android:text="WorkTime:"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/workTime"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight=".7"
+            android:gravity="left"
+            android:text="WorkTime:"
+            android:textColor="@android:color/white" />
+    </TableRow>
+</TableLayout>
