@@ -9,7 +9,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.aluptak.androidrobo.daoWorktTimeRecord.WorkTimeRecordRepo;
+import com.example.aluptak.androidrobo.daoWorktTimeRecord.IWorkTimeRecordRepo;
 import com.example.aluptak.androidrobo.exception.WorkTimeRecord;
 
 import java.sql.SQLException;
@@ -28,7 +28,7 @@ import roboguice.inject.InjectView;
 public class WorkTimeRecordListActivity extends RoboActivity {
 
     @Inject
-    private WorkTimeRecordRepo _workTimeRecordRepo;
+    private IWorkTimeRecordRepo _workTimeRecordRepo;
 
     @InjectView(R.id.workTimeRecordview)
     private ListView _listViewWorkTimerecord;

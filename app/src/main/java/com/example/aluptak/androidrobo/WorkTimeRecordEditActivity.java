@@ -9,8 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.aluptak.androidrobo.daoWorktTimeRecord.WorkTimeRecordRepo;
+import com.example.aluptak.androidrobo.daoWorktTimeRecord.IWorkTimeRecordRepo;
 import com.example.aluptak.androidrobo.exception.WorkTimeRecord;
+import com.example.aluptak.androidrobo.exception.WrongFormatTime;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -30,7 +31,8 @@ import roboguice.inject.InjectView;
 public class WorkTimeRecordEditActivity extends RoboActivity {
 
     @Inject
-    private WorkTimeRecordRepo _workTimeRecordRepo;
+    private IWorkTimeRecordRepo _workTimeRecordRepo;
+
 
     @InjectView(R.id.editTextWorkTimeRecordId)
     private EditText _editTextWorkTimeRecord;

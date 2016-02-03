@@ -1,4 +1,4 @@
-package com.example.aluptak.androidrobo;
+package com.example.aluptak.androidrobo.exception;
 
 /**
  * Created by aluptak on 02/02/2016.
