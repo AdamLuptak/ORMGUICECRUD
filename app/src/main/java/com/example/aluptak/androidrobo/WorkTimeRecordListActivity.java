@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import com.example.aluptak.androidrobo.daoWorktTimeRecord.IWorkTimeRecordRepo;
 import com.example.aluptak.androidrobo.exception.WorkTimeRecord;
+import com.github.lzyzsd.circleprogress.ArcProgress;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -41,7 +42,6 @@ public class WorkTimeRecordListActivity extends RoboActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.work_time_record_list);
         try {
-
             List workTimeRecords = _workTimeRecordRepo.gettWorkTimeRecords();
             WorkTimeRecordListAdapter workTimeRecordListAdapter = new WorkTimeRecordListAdapter(
                     getApplicationContext(), workTimeRecords);
@@ -73,9 +73,10 @@ public class WorkTimeRecordListActivity extends RoboActivity {
                 intent.putExtra("WorkTimeRecord", (WorkTimeRecord) parent.getItemAtPosition(position));
                 startActivityForResult(intent, 0);
                 finish();
-
             }
         });
     }
+
+
 
 }
