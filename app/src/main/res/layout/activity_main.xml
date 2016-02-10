@@ -14,23 +14,16 @@
         android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content">
 
-        <com.github.lzyzsd.circleprogress.DonutProgress
-
-            android:id="@+id/donut_progress"
+        <com.github.lzyzsd.circleprogress.ArcProgress
+            android:id="@+id/arc_progressOvertime"
+            android:layout_gravity="center_horizontal"
             android:layout_width="203dp"
             android:layout_height="199dp"
-            custom:donut_unfinished_stroke_width="5dp"
-            custom:donut_finished_stroke_width="10dp"
-            custom:donut_progress="70"
-            custom:donut_suffix_text=" км"
-
-            custom:donut_text_size ="50dp"
-            custom:donut_top_text="Loading..."
-            custom:donut_inner_text_size="20dp"
-            custom:donut_inner_text_color="#214193"/>
+            custom:arc_progress="55"
+            custom:arc_bottom_text="MEMORY"/>
 
     </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_marginTop="20dp"
@@ -38,26 +31,21 @@
 
         <com.github.lzyzsd.circleprogress.ArcProgress
             android:id="@+id/arc_progress"
-
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="20dp"
             android:layout_width="100dp"
             android:layout_height="100dp"
             custom:arc_progress="55"
-
             custom:arc_bottom_text="MEMORY"/>
 
         <com.github.lzyzsd.circleprogress.ArcProgress
             android:id="@+id/arc_progress21"
-
             android:layout_gravity="right"
-            android:layout_marginLeft="100dp"
+            android:layout_marginLeft="120dp"
             android:layout_width="100dp"
             android:layout_height="100dp"
             custom:arc_progress="55"
             custom:arc_bottom_text="MEMORY"/>
 
-
     </LinearLayout>
-
 
 </LinearLayout>
