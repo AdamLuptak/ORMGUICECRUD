@@ -1,27 +1,26 @@
 package com.example.aluptak.androidrobo;
 
+import android.annotation.TargetApi;
+import android.app.AlarmManager;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v4.app.NotificationCompat;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.example.aluptak.androidrobo.daoWorktTimeRecord.IWorkTimeRecordRepo;
-import com.example.aluptak.androidrobo.daoWorktTimeRecord.WorkTimeRecordRepo;
 import com.example.aluptak.androidrobo.exception.WorkTimeRecord;
+import com.example.aluptak.androidrobo.services.UpdaterService;
 import com.github.lzyzsd.circleprogress.ArcProgress;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 
-import java.sql.SQLException;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
+import java.util.GregorianCalendar;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import javax.inject.Inject;
 
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
@@ -32,18 +31,35 @@ public class MainActivity extends RoboActivity {
 
     private boolean startStop = false;
 
+    private Context context;
+
     @InjectView(R.id.arc_progressOvertime)
     private ArcProgress arcProgress;
 
     @InjectView(R.id.startStopButton)
     private ImageView startStopButton;
 
+    @InjectView(R.id.button)
+    private Button show;
+    @InjectView(R.id.button2)
+    private Button stop;
+    @InjectView(R.id.button3)
+    private Button alert;
+
     Timer myTimer;
+
+    NotificationManager notificationManager;
+
+    boolean isNotificActive = false;
+
+    int notifID = 33;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
 
         myTimer = new Timer();
         myTimer = new Timer();
@@ -65,7 +81,19 @@ public class MainActivity extends RoboActivity {
             }
         }, 1000, 1000);
 
+
+        this.context = this;
+//        Intent alarm = new Intent(this.context, AlertReciever.class);
+//        boolean alarmRunning = (PendingIntent.getBroadcast(this.context, 0, alarm, PendingIntent.FLAG_NO_CREATE) != null);
+//        if (!alarmRunning) {
+//            PendingIntent pendingIntent = PendingIntent.getBroadcast(this.context, 0, alarm, 0);
+//            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+//            alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime(), 15000, pendingIntent);
+//        }
     }
+
+
+
 
 
     public void startStopRecord(View view) {
@@ -107,5 +135,54 @@ public class MainActivity extends RoboActivity {
             }
         }
     }
+
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    public void showNotification(View view) {
+        NotificationCompat.Builder noBuilder = new NotificationCompat.Builder(this).setContentTitle("Message").setContentText("New message").setTicker("Alert New message").setSmallIcon(R.drawable.icon);
+
+        Intent list = new Intent(this, WorkTimeRecordListActivity.class);
+
+        TaskStackBuilder taskStackBuilder = TaskStackBuilder.create(this);
+
+        taskStackBuilder.addNextIntent(list);
+
+        PendingIntent pedingItent = taskStackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        noBuilder.setContentIntent(pedingItent);
+        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        notificationManager.notify(notifID, noBuilder.build());
+        isNotificActive = true;
+
+
+
+
+    }
+
+    public void stopNotification(View view) {
+
+//        if (isNotificActive) {
+//            notificationManager.cancel((notifID));
+//        }
+
+        Intent actIntent = new Intent(context, UpdaterService.class);
+        PendingIntent pi = PendingIntent.getService(context, 0, actIntent, 0);
+
+        AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        am.cancel(pi);
+
+
+
+    }
+
+    public void setAlarm(View view) {
+        Long alertTime = new GregorianCalendar().getTimeInMillis() + 5 * 1000;
+        Intent alertIntent = new Intent(this, AlertReciever.class);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, alertTime, PendingIntent.getBroadcast(this, 1, alertIntent, PendingIntent.FLAG_CANCEL_CURRENT));
+
+    }
+
 
 }
