@@ -10,8 +10,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.aluptak.androidrobo.daoWorktTimeRecord.IWorkTimeRecordRepo;
-import com.example.aluptak.androidrobo.exception.WorkTimeRecord;
-import com.github.lzyzsd.circleprogress.ArcProgress;
+import com.example.aluptak.androidrobo.entity.WorkTimeRecord;
 
 import java.sql.SQLException;
 import java.util.List;

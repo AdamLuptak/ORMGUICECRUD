@@ -1,8 +1,9 @@
 package com.example.aluptak.androidrobo.daoWorktTimeRecord;
 
-import com.example.aluptak.androidrobo.exception.WorkTimeRecord;
+import com.example.aluptak.androidrobo.entity.WorkTimeRecord;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -19,5 +20,9 @@ public interface IWorkTimeRecordRepo {
     public void saveWorkTimeRecord(WorkTimeRecord saveProduct) throws SQLException;
 
     public void updateWorkTimeRecord(WorkTimeRecord updateProduct) throws SQLException;
+
+    public List<WorkTimeRecord> getAlldaysForThisWeek(String monday) throws  SQLException;
+
+    public WorkTimeRecord getFirstWorkTimeForThisDay(Date today) throws  SQLException;
 
 }

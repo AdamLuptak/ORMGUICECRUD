@@ -1,4 +1,4 @@
-package com.example.aluptak.androidrobo.exception;
+package com.example.aluptak.androidrobo.entity;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -7,8 +7,6 @@ import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import roboguice.RoboGuice;
 
 /**
  * Created by aluptak on 02/02/2016.
@@ -35,7 +33,7 @@ public class WorkTimeRecord implements Serializable {
 
     }
 
-    public int getId(){
+    public int getId() {
         return this.id;
     }
 
@@ -58,7 +56,7 @@ public class WorkTimeRecord implements Serializable {
     }
 
     public void setLeaveTimeDate(Date leaveTimeDate) {
-        if (leaveTimeDate != null) this.leaveDate = leaveTimeDate;
+         this.leaveDate = leaveTimeDate;
     }
 
     public String getDayOfWeek() {
@@ -71,7 +69,8 @@ public class WorkTimeRecord implements Serializable {
 
     public String getWorkingTime() {
         if (this.leaveDate != null && this.arrivalDate != null) {
-            Date diff = new Date(this.leaveDate.getTime() - this.arrivalDate.getTime() - TUNE_NUMBER);
+            Date diff = null;
+            diff = new Date(this.leaveDate.getTime() - this.arrivalDate.getTime() - TUNE_NUMBER);
             String HH_MM_SS = "HH.mm.ss";
             SimpleDateFormat formatter = new SimpleDateFormat(HH_MM_SS);
             return formatter.format(diff);

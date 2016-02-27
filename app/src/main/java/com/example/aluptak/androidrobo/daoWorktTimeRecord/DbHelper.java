@@ -3,9 +3,7 @@ package com.example.aluptak.androidrobo.daoWorktTimeRecord;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
-import javax.inject.Inject;
-
-import com.example.aluptak.androidrobo.exception.WorkTimeRecord;
+import com.example.aluptak.androidrobo.entity.WorkTimeRecord;
 import com.google.inject.Singleton;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
@@ -14,6 +12,8 @@ import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
 import java.sql.SQLException;
+
+import javax.inject.Inject;
 
 /**
  * Created by aluptak on 02/02/2016.
@@ -37,7 +37,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
      * Clean database
      * @param clazz generic
      */
-    private void resetDatabase(Class<?> clazz) {
+    public void resetDatabase(Class<?> clazz) {
         try {
             TableUtils.clearTable(getConnectionSource(), clazz);
         } catch (SQLException e) {

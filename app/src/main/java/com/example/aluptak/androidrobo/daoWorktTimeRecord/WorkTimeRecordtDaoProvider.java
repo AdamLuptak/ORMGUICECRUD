@@ -1,14 +1,14 @@
 package com.example.aluptak.androidrobo.daoWorktTimeRecord;
 
-import javax.inject.Inject;
-
-import com.example.aluptak.androidrobo.exception.WorkTimeRecord;
+import com.example.aluptak.androidrobo.entity.WorkTimeRecord;
 import com.google.inject.Provider;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.support.ConnectionSource;
 
 import java.sql.SQLException;
+
+import javax.inject.Inject;
 
 /**
  * Created by aluptak on 02/02/2016.

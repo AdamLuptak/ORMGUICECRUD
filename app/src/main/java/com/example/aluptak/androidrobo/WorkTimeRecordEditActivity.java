@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.aluptak.androidrobo.daoWorktTimeRecord.IWorkTimeRecordRepo;
-import com.example.aluptak.androidrobo.exception.WorkTimeRecord;
+import com.example.aluptak.androidrobo.entity.WorkTimeRecord;
 import com.example.aluptak.androidrobo.exception.WrongFormatTime;
 
 import java.sql.SQLException;
